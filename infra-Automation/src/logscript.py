@@ -6,4 +6,6 @@ def setup_log():
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s'
     )
-    return logging.getLogger
+    return logging.getLogger()
+
+logg = setup_log()
