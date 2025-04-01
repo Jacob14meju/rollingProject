@@ -16,3 +16,27 @@
 2025-04-01 19:20:42,950 - INFO - linux installing:
 2025-04-01 19:20:42,951 - INFO - linux installed
 2025-04-01 19:20:42,952 - INFO - done installing
+2025-04-01 19:26:53,785 - INFO - installer script running
+2025-04-01 19:26:54,029 - INFO - the machineConfig script is running
+2025-04-01 19:27:04,988 - INFO - new machine just added to the list
+2025-04-01 19:27:06,925 - INFO - machine list is updated
+2025-04-01 19:27:06,929 - INFO - adding changes to the file
+2025-04-01 19:27:06,930 - INFO - configuration succesfully saved
+2025-04-01 19:27:06,959 - INFO - provisioning: windows, ubuntu, 45dfgfg, 45gfgfg
+2025-04-01 19:27:06,960 - INFO - machine added to the list
+2025-04-01 19:27:06,961 - INFO - starting installing
+2025-04-01 19:27:06,962 - INFO - windows installing:
+2025-04-01 19:27:06,963 - INFO - windows installed
+2025-04-01 19:27:06,963 - INFO - done installing
+2025-04-01 19:49:47,138 - INFO - installer script running
+2025-04-01 19:49:47,379 - INFO - the machineConfig script is running
+2025-04-01 19:50:02,770 - INFO - new machine just added to the list
+2025-04-01 19:50:04,554 - INFO - machine list is updated
+2025-04-01 19:50:04,558 - INFO - adding changes to the file
+2025-04-01 19:50:04,559 - INFO - configuration succesfully saved
+2025-04-01 19:50:04,588 - INFO - provisioning: windows, ubuntu, 35fgf, 45fbbg
+2025-04-01 19:50:04,588 - INFO - machine added to the list
+2025-04-01 19:50:04,589 - INFO - starting installing
+2025-04-01 19:50:04,590 - INFO - windows installing:
+2025-04-01 19:50:04,590 - INFO - windows installed
+2025-04-01 19:50:04,591 - INFO - done installing

@@ -1,5 +1,7 @@
 import logging
 
+#script to configure logging
+
 logging.basicConfig(
         filename="infra-Automation/logs/provisioning.log",
         level=logging.INFO,

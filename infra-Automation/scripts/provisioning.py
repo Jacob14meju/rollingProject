@@ -4,6 +4,8 @@ sys.path.append('infra-Automation/src')
 from logger import logger
 from jsonschema import validate
 
+# json validate schema
+
 schema = {
     "type": "array",
     "properties": {
@@ -18,13 +20,14 @@ schema = {
 
 
 
-# scripts to configure machines
+# scripts to input machines
+
 logger("the machineConfig script is running")
 
 def inputer():
     machine_list = []
     while True:
-        machines = ["docker", "kubernetes", "linux", "windows"]
+        machines = ["docker", "kubernetes"]
         name = str(input("please enter machine name (\"done\" for exit): "))
         if name.lower() == "done":
             logger("machine list is updated")
@@ -33,7 +36,7 @@ def inputer():
             logger(f'ERROR: machine {name} does not exist', "error")
             continue
         else:
-            os_list = ["ubuntu", "centos"]
+            os_list = ["ubuntu", "centos", "linux", "windows"]
             os = str(input("please enter the os: "))
             if os.lower() not in os_list:
                 logger("ERROR: os does not exist, please try again", "error")
@@ -48,6 +51,8 @@ def inputer():
                 machine_list.append(adding)
                 logger("new machine just added to the list")
 
+#script to write it on file
+
 def writter(res):
     logger("adding changes to the file")
     try:
@@ -59,6 +64,7 @@ def writter(res):
         logger(f'ERROR: {e}', "error")
 
 
+#script to validate and call for writting function
 def push(res):
     try:
         validate(instance=res, schema=schema)
@@ -69,7 +75,8 @@ def push(res):
 
 
 
-# write it on the file
+# check for working script
+
 if __name__ == "__main__":
 
     res = inputer()
