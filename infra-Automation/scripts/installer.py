@@ -1,4 +1,5 @@
-
+import sys
+sys.path.append('infra-Automation/src')
 from logger import logger
 
 def setup_runner(service):
@@ -9,9 +10,9 @@ def setup_runner(service):
     except Exception as e:
         logger(f'failed to install: {e}', "ERROR")
 
-logger("script running")
+logger("installer script running")
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     ans = str(input("please enter the service: "))
 
     setup_runner(ans)

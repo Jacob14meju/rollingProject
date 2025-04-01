@@ -1,11 +1,11 @@
 import json
 import sys
-sys.path.append('/users/בית/OneDrive/שולחן העבודה/finalWork/rollingProject/infra-Automation/src')
+sys.path.append('infra-Automation/src')
 from logger import logger
 from jsonschema import validate
 
 schema = {
-    "type": "object",
+    "type": "array",
     "properties": {
         "name": {"type": "string"},
         "os": {"type": "string"},
@@ -16,12 +16,14 @@ schema = {
 }
 
 
+
+
 # scripts to configure machines
-logger("the script is running")
+logger("the machineConfig script is running")
 
 def inputer():
+    machine_list = []
     while True:
-        machine_list = []
         machines = ["docker", "kubernetes", "linux", "windows"]
         name = str(input("please enter machine name (\"done\" for exit): "))
         if name.lower() == "done":
@@ -49,7 +51,7 @@ def inputer():
 def writter(res):
     logger("adding changes to the file")
     try:
-        with open("/users/בית/OneDrive/שולחן העבודה/finalWork/rollingProject/infra-Automation/configs/instances.json", "w") as file:
+        with open("infra-Automation/configs/instances.json", "w") as file:
             file.write(json.dumps(res))
             logger("configuration succesfully saved")
 
@@ -68,24 +70,20 @@ def push(res):
 
 
 # write it on the file
-if "__name__" == "__main__":
+if __name__ == "__main__":
 
     res = inputer()
     try:
-        validate(instance=res, schema=schema)
+        validate(instance=i, schema=schema)
         writter(res)
 
     except Exception as e:
         logger(f'ERROR: {e}', "error")
 
 
-res = inputer()
-try:
-    validate(instance=res, schema=schema)
-    writter(res)
 
-except Exception as e:
-    logger(f'ERROR: {e}', "error")
+
+
 
 
         

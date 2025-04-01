@@ -1,7 +1,7 @@
 import logging
 
 logging.basicConfig(
-        filename="/users/בית/OneDrive/שולחן העבודה/finalWork/rollingProject/infra-Automation/logs/provisioning.log.txt",
+        filename="infra-Automation/logs/provisioning.log",
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s'
     )
