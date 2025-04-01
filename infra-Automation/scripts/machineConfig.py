@@ -2,6 +2,18 @@ import json
 import sys
 sys.path.append('/users/בית/OneDrive/שולחן העבודה/finalWork/rollingProject/infra-Automation/src')
 from logger import logger
+from jsonschema import validate
+
+schema = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "os": {"type": "string"},
+        "cpu": {"type": "string"},
+        "ram": {"type": "string"}
+    },
+    "required": ["name", "os", "cpu", "ram"]
+}
 
 
 # scripts to configure machines
@@ -16,13 +28,13 @@ def inputer():
             logger("machine list is updated")
             return machine_list
         elif name.lower() not in machines:
-            logger(f'machine {name} does not exist')
+            logger(f'ERROR: machine {name} does not exist', "error")
             continue
         else:
             os_list = ["ubuntu", "centos"]
             os = str(input("please enter the os: "))
             if os.lower() not in os_list:
-                logger("os does not exist, please try again")
+                logger("ERROR: os does not exist, please try again", "error")
                 continue
             else:
                 cpu = str(input("please enter the CPU: "))
@@ -34,23 +46,46 @@ def inputer():
                 machine_list.append(adding)
                 logger("new machine just added to the list")
 
-
-
-# write it on the file
-
-res = inputer()
-
-def writter():
+def writter(res):
     logger("adding changes to the file")
     try:
         with open("/users/בית/OneDrive/שולחן העבודה/finalWork/rollingProject/infra-Automation/configs/instances.json", "w") as file:
             file.write(json.dumps(res))
+            logger("configuration succesfully saved")
 
     except Exception as e:
-        print(f'ERROR: {e}')
+        logger(f'ERROR: {e}', "error")
 
-    else:
-        logger("configuration succesfully saved")
-    
+
+def push(res):
+    try:
+        validate(instance=res, schema=schema)
+        writter(res)
+
+    except Exception as e:
+        logger(f'ERROR: {e}', "error")
+
+
+
+# write it on the file
+if "__name__" == "__main__":
+
+    res = inputer()
+    try:
+        validate(instance=res, schema=schema)
+        writter(res)
+
+    except Exception as e:
+        logger(f'ERROR: {e}', "error")
+
+
+res = inputer()
+try:
+    validate(instance=res, schema=schema)
+    writter(res)
+
+except Exception as e:
+    logger(f'ERROR: {e}', "error")
+
 
         

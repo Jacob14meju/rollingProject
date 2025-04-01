@@ -8,7 +8,7 @@ logging.basicConfig(
 
 def logger(msg, level="info"):
     if level == "error":
-        logging.ERROR(msg)
+        logging.ERROR
         print(msg)
     else:
         logging.info(msg)
